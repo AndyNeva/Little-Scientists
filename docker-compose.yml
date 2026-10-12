@@ -1,0 +1,61 @@
+# ============================================================================
+# Aventura IA — ejecución con Docker
+#
+#   docker compose up -d --build      arrancar
+#   docker compose logs -f            ver la actividad
+#   docker compose down               detener
+#
+# Guía completa para quien administra el servidor: docs/DEPLOY.md
+# ============================================================================
+
+services:
+  aventura-ia:
+    build: .
+    image: aventura-ia:1.0
+    container_name: aventura-ia
+    restart: unless-stopped
+
+    # Solo accesible desde el propio servidor. Para publicarlo en la red, ver
+    # docs/DEPLOY.md §4: hay que poner HTTPS o la cámara no funcionará.
+    ports:
+      - "127.0.0.1:5000:5000"
+
+    # Las credenciales NO están dentro de la imagen: se pasan aquí. Cambia
+    # IMAGE_PROVIDER a cloudflare o gemini y pon las claves correspondientes.
+    environment:
+      IMAGE_PROVIDER: "${IMAGE_PROVIDER:-mock}"
+      PORT: "5000"
+      HOST: "0.0.0.0"
+      LOG_LEVEL: "${LOG_LEVEL:-INFO}"
+      MAX_UPLOAD_MB: "${MAX_UPLOAD_MB:-8}"
+      MAX_NAME_LENGTH: "${MAX_NAME_LENGTH:-20}"
+      REQUEST_TIMEOUT_SECONDS: "${REQUEST_TIMEOUT_SECONDS:-60}"
+      INPUT_MAX_SIDE_PX: "${INPUT_MAX_SIDE_PX:-1024}"
+      INPUT_JPEG_QUALITY: "${INPUT_JPEG_QUALITY:-90}"
+      GEMINI_INPUT_MAX_SIDE_PX: "${GEMINI_INPUT_MAX_SIDE_PX:-1024}"
+      # Credenciales (deja vacías las que no uses)
+      CLOUDFLARE_ACCOUNT_ID: "${CLOUDFLARE_ACCOUNT_ID:-}"
+      CLOUDFLARE_API_TOKEN: "${CLOUDFLARE_API_TOKEN:-}"
+      CLOUDFLARE_MODEL: "${CLOUDFLARE_MODEL:-@cf/black-forest-labs/flux-2-klein-9b}"
+      GEMINI_API_KEY: "${GEMINI_API_KEY:-}"
+      GEMINI_MODEL: "${GEMINI_MODEL:-gemini-nano-banana-2.1}"
+
+    # La aplicación no guarda nada en disco (no hay fotografías ni resultados),
+    # así que el contenedor puede ser de solo lectura salvo /tmp.
+    read_only: true
+    tmpfs:
+      - /tmp
+
+    security_opt:
+      - no-new-privileges:true
+
+    healthcheck:
+      test:
+        - CMD
+        - python
+        - -c
+        - "import urllib.request,sys; sys.exit(0 if urllib.request.urlopen('http://127.0.0.1:5000/api/health', timeout=4).status==200 else 1)"
+      interval: 30s
+      timeout: 5s
+      start_period: 10s
+      retries: 3

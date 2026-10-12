@@ -1,0 +1,32 @@
+# Secretos — nunca al repositorio
+.env
+.env.local
+
+# Entornos virtuales
+.venv/
+venv/
+env/
+
+# Caché de Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+
+# Fotografías, descargas e imágenes temporales (privacidad: nada de esto se conserva)
+*.jpg
+*.jpeg
+*.png
+*.webp
+!static/assets/**/*.png
+!tests/fixtures/**/*.png
+
+# Salidas de herramientas
+.coverage
+htmlcov/
+*.log
+
+# Archivos de diseño originales y salidas de herramientas de prueba
+*.zip
+tests/fixtures/*.jpg
+tests/fixtures/*.webp

@@ -1,0 +1,30 @@
+# .gitattributes — normaliza los finales de línea.
+#
+# Importante para Docker: si un archivo acaba en CRLF (Windows) y se copia a un
+# contenedor Linux, algunas herramientas fallan de formas difíciles de diagnosticar.
+# Con esto, en el repositorio todo usa LF y Git avisa en lugar de convertir en silencio.
+
+* text=auto eol=lf
+
+# Archivos que deben quedarse tal cual (imágenes, fuentes, comprimidos)
+*.ttf binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.zip binary
+
+# Windows: los scripts de PowerShell sí usan CRLF
+*.ps1 text eol=crlf
+
+# Se marcan como texto para que Git muestre diferencias legibles
+*.md text
+*.py text
+*.js text
+*.css text
+*.html text
+*.yml text
+*.yaml text
+Dockerfile text
+.dockerignore text
+.gitignore text

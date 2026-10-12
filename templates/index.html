@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>¡Conviértete en un personaje de aventura!</title>
+  <!-- Tipografías del sistema de diseño, servidas localmente (sin depender de internet). -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+  <!-- Resplandores ambientales del sistema de diseño -->
+  <div class="ambient" aria-hidden="true">
+    <span class="ambient-orb ambient-orb--primary"></span>
+    <span class="ambient-orb ambient-orb--secondary"></span>
+    <span class="ambient-orb ambient-orb--tertiary"></span>
+  </div>
+
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 40 40" role="presentation">
+            <circle cx="20" cy="20" r="19" fill="#630ed4"/>
+            <circle cx="20" cy="19" r="11" fill="#8455ef"/>
+            <circle cx="20" cy="19" r="8" fill="#24005b"/>
+            <circle cx="17" cy="15" r="2" fill="#ffffff"/>
+            <path d="M25 24 l4 -9 l1.4 3.2 l3.4 .5 l-2.6 2.3 l.7 3.4 l-3 -1.7 l-3 1.7 Z" fill="#F59E0B"/>
+          </svg>
+        </span>
+        <span class="brand-text">
+          <strong>Aventura IA</strong>
+          <small>Transformación de personajes</small>
+        </span>
+      </div>
+
+      <p id="demo-badge" class="chip chip--demo" hidden>
+        <span aria-hidden="true">✨</span> Modo demostración
+      </p>
+    </div>
+  </header>
+
+  <main id="app">
+
+    <!-- Pantalla 1 · Bienvenida -->
+    <section class="screen" id="screen-welcome" aria-labelledby="welcome-title">
+      <article class="card card--hero">
+        <span class="ornament ornament--1" aria-hidden="true">✨</span>
+        <span class="ornament ornament--2" aria-hidden="true">⭐</span>
+        <span class="ornament ornament--3" aria-hidden="true">🌟</span>
+
+        <p class="chip chip--step" id="welcome-chip">
+          <span aria-hidden="true">🚀</span> Paso 1 de 5 · Bienvenida
+        </p>
+
+        <div class="emblem" aria-hidden="true">
+          <svg viewBox="0 0 200 200" role="presentation">
+            <circle cx="100" cy="96" r="64" fill="#24005b"/>
+            <rect x="24" y="80" width="20" height="36" rx="10" fill="#24005b"/>
+            <rect x="156" y="80" width="20" height="36" rx="10" fill="#24005b"/>
+            <rect x="28" y="84" width="12" height="28" rx="6" fill="#F59E0B"/>
+            <rect x="160" y="84" width="12" height="28" rx="6" fill="#F59E0B"/>
+            <circle cx="100" cy="96" r="56" fill="#8455ef"/>
+            <circle cx="100" cy="96" r="50" fill="#b78eff"/>
+            <circle cx="100" cy="96" r="42" fill="#24005b"/>
+            <circle cx="100" cy="96" r="38" fill="#630ed4"/>
+            <circle cx="82" cy="74" r="4" fill="#ffffff" opacity="0.9"/>
+            <circle cx="74" cy="88" r="2.5" fill="#eaddff" opacity="0.8"/>
+            <circle cx="124" cy="116" r="2.5" fill="#F59E0B" opacity="0.9"/>
+            <circle cx="114" cy="78" r="3" fill="#ffffff" opacity="0.7"/>
+            <path d="M68 140 C68 152, 132 152, 132 140 Z" fill="#24005b"/>
+            <path d="M72 138 C72 146, 128 146, 128 138 Z" fill="#8455ef"/>
+            <rect x="90" y="140" width="20" height="7" rx="3.5" fill="#F59E0B"/>
+            <g>
+              <rect x="44" y="126" width="60" height="13" rx="6.5" fill="#24005b" transform="rotate(-45 44 126)"/>
+              <rect x="47" y="124.5" width="54" height="7" rx="3.5" fill="#eaddff" transform="rotate(-45 47 124.5)"/>
+              <circle cx="48" cy="122" r="5" fill="#F59E0B"/>
+              <path d="M104 54 L110 68 L125 70 L114 81 L117 96 L104 88 L91 96 L94 81 L83 70 L98 68 Z" fill="#24005b"/>
+              <path d="M104 57 L109 69 L122 71 L112 80 L115 93 L104 86 L93 93 L96 80 L86 71 L99 69 Z" fill="#F59E0B"/>
+              <path d="M104 62 L107 70 L116 71 L109 77 L111 86 L104 81 L97 86 L99 77 L92 71 L101 70 Z" fill="#FDE68A"/>
+            </g>
+            <polygon points="152,48 155,55 162,56 156,61 158,68 152,64 146,68 148,61 142,56 149,55" fill="#F59E0B"/>
+            <polygon points="46,104 48,109 54,110 49,114 51,119 46,116 41,119 43,114 38,110 44,109" fill="#F59E0B"/>
+          </svg>
+        </div>
+
+        <h1 id="welcome-title">¡Conviértete en un personaje de aventura!</h1>
+        <p class="lead">Te sacamos una foto y la inteligencia artificial te transforma.</p>
+
+        <div class="steps">
+          <div class="step">
+            <span class="step-icon" aria-hidden="true">📸</span>
+            <span class="step-number" aria-hidden="true">1</span>
+            <h2>Sonríe a la cámara</h2>
+            <p>Ponte frente a la webcam con la cara despejada.</p>
+          </div>
+          <div class="step">
+            <span class="step-icon" aria-hidden="true">🦸</span>
+            <span class="step-number" aria-hidden="true">2</span>
+            <h2>Elige tu personaje</h2>
+            <p>Ocho aventuras distintas te están esperando.</p>
+          </div>
+          <div class="step">
+            <span class="step-icon" aria-hidden="true">✨</span>
+            <span class="step-number" aria-hidden="true">3</span>
+            <h2>Descarga tu magia</h2>
+            <p>Te llevas tu imagen en PNG para compartirla.</p>
+          </div>
+        </div>
+
+        <div class="actions actions--center">
+          <button type="button" class="btn btn--primary btn--xl" id="btn-start">
+            <span aria-hidden="true">🚀</span>
+            <span>Empezar aventura</span>
+          </button>
+        </div>
+
+        <p class="trust">
+          <span aria-hidden="true">🔒</span>
+          Tu foto se usa solo para crear tu personaje y no se guarda.
+        </p>
+      </article>
+    </section>
+
+    <!-- Pantalla 2 · Fotografía -->
+    <section class="screen" id="screen-camera" aria-labelledby="camera-title" hidden>
+      <article class="card">
+        <p class="chip chip--step"><span aria-hidden="true">📸</span> Paso 2 de 5 · Tu foto</p>
+        <h2 id="camera-title">Mira a la cámara y deja tu cara despejada.</h2>
+
+        <div class="notice">
+          <span class="notice-icon" aria-hidden="true">👀</span>
+          <div>
+            <strong>¡Mira directo a la cámara y deja tu cara despejada!</strong>
+            <p>Muestra tu sonrisa más brillante mientras se activa la cámara.</p>
+          </div>
+        </div>
+
+        <div class="camera-frame">
+          <video id="video" playsinline autoplay muted></video>
+          <img id="snapshot" alt="Tu foto" hidden>
+          <span class="corner corner--tl" aria-hidden="true"></span>
+          <span class="corner corner--tr" aria-hidden="true"></span>
+          <span class="corner corner--bl" aria-hidden="true"></span>
+          <span class="corner corner--br" aria-hidden="true"></span>
+          <p class="camera-status" id="camera-status">Activando la cámara…</p>
+        </div>
+
+        <div class="actions actions--center">
+          <button type="button" class="btn btn--primary btn--xl" id="btn-capture">
+            <span aria-hidden="true">📸</span>
+            <span>Tomar foto</span>
+          </button>
+          <button type="button" class="btn btn--secondary" id="btn-repeat" hidden>Repetir</button>
+          <button type="button" class="btn btn--primary" id="btn-continue" hidden>Continuar</button>
+        </div>
+
+        <div class="alert" id="camera-error" role="alert" hidden>
+          <p id="camera-error-text"></p>
+          <button type="button" class="btn btn--secondary" id="btn-camera-retry">Intentar de nuevo</button>
+        </div>
+      </article>
+    </section>
+
+    <!-- Pantalla 3 · Selección -->
+    <section class="screen" id="screen-select" aria-labelledby="select-title" hidden>
+      <article class="card">
+        <p class="chip chip--step"><span aria-hidden="true">✨</span> Paso 3 de 5 · Elige tu personaje</p>
+        <h2 id="select-title">¿Quién quieres ser hoy?</h2>
+        <p class="lead lead--tight">Toca tu personaje favorito para que la inteligencia artificial cree tu foto.</p>
+
+        <div class="photo-strip">
+          <img id="select-photo" alt="Tu foto">
+          <span class="photo-strip-badge" aria-hidden="true">Tu foto</span>
+        </div>
+
+        <div class="grid" id="style-grid" role="radiogroup" aria-label="Personajes disponibles"></div>
+
+        <div class="name-field">
+          <label for="input-name"><span aria-hidden="true">✍️</span> Tu nombre (opcional)</label>
+          <input id="input-name" name="name" type="text" maxlength="20" autocomplete="off"
+                 placeholder="Por ejemplo: Ana" aria-describedby="name-help name-error">
+          <p class="help" id="name-help">💡 Si lo escribes, saldrá en tu imagen.</p>
+          <p class="field-error" id="name-error" role="alert" hidden></p>
+        </div>
+
+        <div class="actions actions--center">
+          <button type="button" class="btn btn--ghost" id="btn-back-camera">← Volver a la foto</button>
+          <button type="button" class="btn btn--primary btn--xl" id="btn-transform">
+            <span aria-hidden="true">✨</span>
+            <span>Transformarme</span>
+          </button>
+        </div>
+      </article>
+    </section>
+
+    <!-- Pantalla 4 · Procesamiento -->
+    <section class="screen screen--center" id="screen-loading" aria-labelledby="loading-title" hidden>
+      <article class="card card--loading">
+        <p class="chip chip--step"><span aria-hidden="true">🪄</span> Paso 4 de 5 · Magia en marcha</p>
+        <h2 id="loading-title">Estamos preparando tu aventura…</h2>
+        <p class="lead lead--tight">
+          La inteligencia artificial está pintando tu personaje con mucho cuidado.
+        </p>
+
+        <div class="magic-portal" aria-hidden="true">
+          <span class="magic-orb"></span>
+          <span class="magic-spark magic-spark--1">✨</span>
+          <span class="magic-spark magic-spark--2">⭐</span>
+          <span class="magic-spark magic-spark--3">🌟</span>
+        </div>
+
+        <div class="progress" role="progressbar" aria-labelledby="loading-title">
+          <div class="progress-head">
+            <span>Creando tu personaje</span>
+            <span class="progress-state">En marcha</span>
+          </div>
+          <div class="progress-track"><span class="progress-bar" id="progress-bar"></span></div>
+        </div>
+
+        <p class="loading-hint" id="loading-hint">Esto puede tardar un poquito.</p>
+
+        <div class="actions actions--center">
+          <button type="button" class="btn btn--secondary" id="btn-cancel">Volver</button>
+        </div>
+      </article>
+    </section>
+
+    <!-- Pantalla 5 · Resultado -->
+    <section class="screen" id="screen-result" aria-labelledby="result-title" hidden>
+      <article class="card">
+        <p class="chip chip--step"><span aria-hidden="true">🏆</span> Paso 5 de 5 · ¡Misión cumplida!</p>
+        <h2 id="result-title">¡Tu personaje está aquí!</h2>
+
+        <div class="result-layout">
+          <figure class="result-figure">
+            <img id="result-image" alt="Tu personaje de aventura">
+          </figure>
+
+          <aside class="result-side">
+            <div class="result-panel">
+              <h3>¡Llévate tu recuerdo a casa!</h3>
+              <p>Descarga tu imagen en PNG y guárdala como recuerdo de la feria.</p>
+              <div class="actions actions--stack">
+                <button type="button" class="btn btn--primary btn--xl" id="btn-download">
+                  <span aria-hidden="true">⬇️</span>
+                  <span>Descargar imagen</span>
+                </button>
+                <button type="button" class="btn btn--secondary" id="btn-other-style">
+                  <span aria-hidden="true">🎭</span>
+                  <span>Probar otro personaje</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="result-panel result-panel--quiet">
+              <button type="button" class="btn btn--secondary btn--xl" id="btn-next">
+                <span aria-hidden="true">🔄</span>
+                <span>Siguiente participante · Empezar de nuevo</span>
+              </button>
+              <p class="help">
+                Borra la foto y la elección de este niño o niña y vuelve al inicio,
+                listo para el siguiente de la fila.
+              </p>
+            </div>
+          </aside>
+        </div>
+
+        <p class="result-caption" id="result-caption"></p>
+
+        <div class="alert" id="download-error" role="alert" hidden>
+          <p>No pudimos descargar la imagen. Inténtalo otra vez.</p>
+        </div>
+      </article>
+    </section>
+
+    <!-- Error de generación: aviso fijo, siempre visible aunque la página esté desplazada -->
+    <div class="alert-overlay" id="generate-error" role="alert" hidden>
+      <div class="alert alert--floating">
+        <p id="generate-error-text"></p>
+        <div class="actions actions--tight">
+          <button type="button" class="btn btn--secondary" id="btn-generate-retry">Intentar de nuevo</button>
+          <button type="button" class="btn btn--ghost" id="btn-generate-other">Elegir otro personaje</button>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <p><span aria-hidden="true">⭐</span> Aventura IA · Exploración interactiva y divertida para futuros científicos</p>
+      <p class="footer-meta"><span class="dot" aria-hidden="true"></span> Semillero PerceptIA</p>
+    </div>
+  </footer>
+
+  <script src="{{ url_for('static', filename='js/camera.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

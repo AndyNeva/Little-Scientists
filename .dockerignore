@@ -1,0 +1,40 @@
+# .dockerignore — lo que NO entra en la imagen.
+# Mantener la imagen pequeña y, sobre todo, evitar que las credenciales viajen dentro.
+
+# Secretos: jamás dentro de la imagen. Se montan en tiempo de ejecución.
+.env
+.env.local
+*.pem
+*.key
+
+# Entornos virtuales y cachés
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+
+# Control de versiones y herramientas
+.git/
+.gitignore
+.github/
+
+# Pruebas: no hacen falta para ejecutar la aplicación
+tests/
+
+# Documentos de trabajo (se consultan en el repositorio, no en el contenedor)
+docs/design/
+*.zip
+*.log
+
+# Material gráfico de referencia que no se sirve
+captura_*.png
+prueba_*.png
+salida_*.png
+final_*.png
+flujo_*.png
+demo_*.png
+rubrica_*.jpg
+resultado_*.png

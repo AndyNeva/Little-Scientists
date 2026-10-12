@@ -189,6 +189,7 @@ Los documentos de decisión y operación están en **`docs/`** (coincide con
 
 | Documento | Contenido |
 |---|---|
+| [`docs/ENTREGA.md`](docs/ENTREGA.md) | **Qué variables pasar y cómo ejecutarlo** (para quien lo recibe). |
 | [`docs/DEPLOY.md`](docs/DEPLOY.md) | **Cómo poner la aplicación en un servidor** (para quien lo administra). |
 | [`docs/GITHUB.md`](docs/GITHUB.md) | Cómo subir el proyecto a GitHub y dar acceso al encargado. |
 | [`docs/PLAN.md`](docs/PLAN.md) | Decisiones técnicas y variables de entorno. |

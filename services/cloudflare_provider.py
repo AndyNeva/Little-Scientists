@@ -2,10 +2,10 @@
 
 Modelo: **`@cf/black-forest-labs/flux-2-klein-9b`** (FLUX.2 [klein] 9B, Black Forest Labs).
 
-Por qué este modelo y no otro (`docs/PROVIDER_VALIDATION.md`): el caso de uso
-necesita **generación condicionada por imagen** (transformar la foto del
-participante), no texto a imagen. FLUX.2 [klein] 9B es el modelo del catálogo de
-Workers AI que cumple eso y **está operativo**:
+Por qué este modelo y no otro: el caso de uso necesita **generación condicionada
+por imagen** (transformar la foto del participante), no texto a imagen. FLUX.2
+[klein] 9B es el modelo del catálogo de Workers AI que cumple eso y **está
+operativo**:
 
 - admite imágenes de referencia en los campos `input_image_0` … `input_image_3`;
 - se le llama con `multipart/form-data`;

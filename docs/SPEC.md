@@ -5,8 +5,8 @@
 **Estado:** Planificación  
 **Plazo objetivo:** 1 día de desarrollo  
 **Stack principal:** Python + Flask + HTML/CSS/JavaScript  
-**Proveedor inicial:** Cloudflare Workers AI (candidato; se confirma o descarta en la Fase 0, ver `docs/PROVIDER_VALIDATION.md`)  
-**Proveedor objetivo:** API de generación de imágenes de Gemini
+**Proveedor inicial:** Cloudflare Workers AI (validado con llamadas reales)  
+**Proveedor alternativo:** API de generación de imágenes de Gemini (también validado)
 
 ---
 
@@ -14,17 +14,16 @@
 
 | Documento | Responde a | Contenido |
 |---|---|---|
-| `SPEC.md` | ¿Qué y por qué? | Alcance, requisitos, privacidad, riesgos (este documento). |
-| `docs/PLAN.md` | ¿Cómo? | Decisiones técnicas, variables de entorno, decisiones abiertas. |
+| `docs/SPEC.md` | ¿Qué y por qué? | Alcance, requisitos, privacidad, riesgos (este documento). |
 | `docs/API.md` | ¿Qué contrato? | Rutas, campos, límites, códigos de error. |
 | `docs/PROMPTS.md` | ¿Qué se le pide a la IA? | Prompts de los ocho estilos y rúbrica de evaluación. |
 | `docs/UI_COPY.md` | ¿Qué dice la interfaz? | Textos de pantallas y mensajes de error. |
-| `docs/PROVIDER_VALIDATION.md` | ¿Sirve el proveedor? | Resultado de la Fase 0 (puerta de control). |
-| `TASKS.md` | ¿En qué orden? | Plan de ejecución por fases, único plan del proyecto. |
+| `docs/TASKS.md` | ¿En qué orden? | Plan de ejecución por fases, único plan del proyecto. |
 | `docs/TEST_PLAN.md` | ¿Cómo se verifica? | Pruebas automáticas, escenarios y ensayo general. |
-| `docs/RUNBOOK.md` | ¿Cómo se opera en la feria? | Guía del operador y contingencias. |
+| `docs/DEPLOY.md` | ¿Cómo se despliega? | Instalación en un servidor, variables y operación. |
+| `docs/design/DESIGN.md` | ¿Cómo se ve? | Sistema de diseño de la interfaz. |
 
-**Precedencia ante conflictos:** `SPEC.md` > `docs/PLAN.md` > `docs/API.md`, `docs/PROMPTS.md`, `docs/UI_COPY.md` > `TASKS.md`. Un conflicto se reporta y se corrige en el documento, no se resuelve en silencio en el código.
+**Precedencia ante conflictos:** `docs/SPEC.md` > `docs/API.md`, `docs/PROMPTS.md`, `docs/UI_COPY.md` > `docs/TASKS.md`. Un conflicto se reporta y se corrige en el documento, no se resuelve en silencio en el código.
 
 ---
 
@@ -222,25 +221,25 @@ ImageGenerator (interfaz común)
 ### 5.3 Estructura de carpetas propuesta
 
 ```text
-feria_ia/
+Little-Scientists/
 ├── app.py
 ├── config.py
 ├── requirements.txt
 ├── .env.example
 ├── .gitignore
 ├── README.md
-├── SPEC.md
-├── TASKS.md
-├── AGENTE_DESARROLLADOR.md
-├── CLAUDE.md                  # importa AGENTE_DESARROLLADOR.md (si se usa Claude Code)
+├── Dockerfile
+├── docker-compose.yml
 ├── docs/
-│   ├── PLAN.md
+│   ├── SPEC.md
+│   ├── TASKS.md
 │   ├── API.md
 │   ├── PROMPTS.md
 │   ├── UI_COPY.md
-│   ├── PROVIDER_VALIDATION.md
 │   ├── TEST_PLAN.md
-│   └── RUNBOOK.md
+│   ├── DEPLOY.md
+│   └── design/
+│       └── DESIGN.md
 ├── services/
 │   ├── __init__.py
 │   ├── image_generator.py     # interfaz común

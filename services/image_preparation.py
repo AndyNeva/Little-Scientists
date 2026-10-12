@@ -1,9 +1,9 @@
 """Preparación de la fotografía recibida.
 
-Requisitos: SPEC.md §7.1 y API.md §4 pasos 1–2. No se confía en la extensión ni
-en el MIME declarado por el navegador: el contenido debe decodificarse como una
-imagen real. Se corrige la orientación EXIF y se reduce la resolución si hace
-falta (PLAN.md Q-04). Nada de esto se escribe en disco.
+Requisitos: `docs/SPEC.md` §7.1 y `docs/API.md` §4 pasos 1–2. No se confía en la
+extensión ni en el MIME declarado por el navegador: el contenido debe decodificarse
+como una imagen real. Se corrige la orientación EXIF y se reduce la resolución si
+hace falta. Nada de esto se escribe en disco.
 """
 
 from __future__ import annotations

@@ -28,8 +28,8 @@ FAKE_SECRET = "clave-ficticia-para-pruebas-9f3a1c"
 class _RecordingHandler(logging.Handler):
     """Captura lo que el logger de la aplicación registra de verdad.
 
-    El logger `feria_ia` no propaga (PLAN.md D-10 evita que las trazas de
-    Werkzeug arrastren datos), así que se engancha aquí un manejador propio.
+    El logger `feria_ia` no propaga (así las trazas de Werkzeug no arrastran
+    datos), así que se engancha aquí un manejador propio.
     """
 
     def __init__(self) -> None:
@@ -91,7 +91,7 @@ def _post_generate(client, photo: bytes, style_id: str = "astronaut", name: str 
 
 
 def test_tras_generar_no_hay_archivos_nuevos(app, sample_photo):
-    """El servidor no escribe fotografías ni resultados en disco (PLAN.md D-01 y D-02)."""
+    """El servidor no escribe fotografías ni resultados en disco."""
     watched = [BASE_DIR, Path(app.instance_path) if app.instance_path else BASE_DIR]
     before = _snapshot(watched)
 
@@ -106,7 +106,7 @@ def test_tras_generar_no_hay_archivos_nuevos(app, sample_photo):
 
 
 def test_los_logs_no_contienen_el_nombre_ni_bytes_de_la_imagen(app, sample_photo, app_logs):
-    """PLAN.md D-10: solo ruta, estilo, código y duración."""
+    """Los logs registran solo ruta, estilo, código y duración."""
     name = "Valentina"
 
     response = _post_generate(app.test_client(), sample_photo, style_id="ocean", name=name)

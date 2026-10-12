@@ -1,7 +1,7 @@
-"""Pruebas del proveedor Cloudflare (TEST_PLAN.md §2).
+"""Pruebas del proveedor Cloudflare (`docs/TEST_PLAN.md` §2).
 
 La capa HTTP está simulada: estas pruebas **no** consumen cuota ni envían
-fotografías a internet. La llamada real es la Fase 0 (`docs/PROVIDER_VALIDATION.md`).
+fotografías a internet.
 """
 
 from __future__ import annotations

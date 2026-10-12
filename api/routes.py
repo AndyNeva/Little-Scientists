@@ -1,8 +1,8 @@
-"""Rutas HTTP de la API. Contrato completo en `API.md`.
+"""Rutas HTTP de la API. Contrato completo en `docs/API.md`.
 
-El servidor no mantiene estado de sesión y nunca escribe en disco (PLAN.md D-01
-y D-02). Los logs registran solo ruta, estilo, código de resultado y duración
-(PLAN.md D-10): nunca imágenes, nombres, claves ni cuerpos de solicitud.
+El servidor no mantiene estado de sesión y nunca escribe en disco. Los logs
+registran solo ruta, estilo, código de resultado y duración: nunca imágenes,
+nombres, claves ni cuerpos de solicitud.
 """
 
 from __future__ import annotations
@@ -25,12 +25,12 @@ api = Blueprint("api", __name__)
 
 logger = logging.getLogger("feria_ia")
 
-#: Una sola generación a la vez (PLAN.md D-11). El bloqueo no bloquea: si está
-#: ocupado se responde BUSY.
+#: Una sola generación a la vez. El bloqueo no bloquea: si está ocupado se
+#: responde BUSY.
 _generation_lock = threading.Lock()
 
 
-#: Mensajes seguros por código de error (API.md §1 y §5). Los mensajes de los
+#: Mensajes seguros por código de error (`docs/API.md` §1 y §5). Los mensajes de los
 #: adaptadores pueden contener detalles internos, así que nunca se reenvían tal
 #: cual: el cliente recibe siempre este texto fijo.
 SAFE_MESSAGES: dict[str, str] = {
@@ -59,7 +59,7 @@ def _safe_message(code: str, fallback: str = "") -> str:
 
 
 def _log_provider_failure(category: str, exc: BaseException) -> None:
-    """Registra la clase del error y un mensaje saneado (PLAN.md D-10).
+    """Registra la clase del error y un mensaje saneado.
 
     Se eliminan del mensaje los valores de las credenciales configuradas para que
     una clave nunca llegue al log.
@@ -86,7 +86,7 @@ def _log_quota_hint(settings: config.Settings) -> None:
 
     Sin esto, el operador ve «límite de uso agotado» y no sabe si esperar, cambiar
     de proveedor o pasar a modo demostración. El proveedor activo solo se nombra
-    aquí, en los registros, nunca en la pantalla (PLAN.md D-16).
+    aquí, en los registros, nunca en la pantalla.
     """
     alternativas = [p for p in config.PROVIDERS_VALIDOS if p != settings.provider]
     disponibles = []

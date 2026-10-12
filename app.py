@@ -1,8 +1,7 @@
 """Aplicación Flask del prototipo de transformación de fotos con IA.
 
 Punto de entrada: `python app.py` (ver README.md). Servidor **sin estado**, que
-no escribe fotografías en disco y no expone claves al navegador (PLAN.md D-01,
-D-02 y D-12).
+no escribe fotografías en disco y no expone claves al navegador.
 """
 
 from __future__ import annotations
@@ -22,7 +21,7 @@ logger = logging.getLogger("feria_ia")
 
 
 def _configure_logging() -> None:
-    """Logs solo de eventos (PLAN.md D-10).
+    """Logs solo de eventos.
 
     El nivel se controla con `LOG_LEVEL` (por defecto INFO). Nunca se registran
     imágenes, nombres, claves ni cuerpos de solicitud.

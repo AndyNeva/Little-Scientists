@@ -1,6 +1,6 @@
 """Validación del nombre opcional del participante.
 
-Reglas: PLAN.md D-08 y API.md §4 — tras recortar espacios, entre 1 y
+Reglas: `docs/API.md` §4 — tras recortar espacios, entre 1 y
 `MAX_NAME_LENGTH` caracteres; solo letras Unicode, espacios, guion y apóstrofo.
 No se usa como identificador de sesión ni como nombre de archivo.
 """

@@ -1,6 +1,7 @@
 """Composición final con Pillow: franja de título debajo de la imagen.
 
-Decisiones: PLAN.md D-07 y D-14; requisitos: SPEC.md §7.2 y API.md §4 paso 6.
+Decisiones: franja de título debajo de la imagen y tipografía libre con soporte de
+tildes; requisitos: `docs/SPEC.md` §7.2 y `docs/API.md` §4 paso 6.
 
 El título lo dibuja **siempre** este módulo, nunca la IA, y la franja se añade
 debajo de la imagen (el lienzo crece), de modo que el texto nunca cubre el rostro.
@@ -16,7 +17,7 @@ from PIL import Image, ImageColor, ImageDraw, ImageFont
 BASE_DIR = Path(__file__).resolve().parent.parent
 BUNDLED_FONT_DIR = BASE_DIR / "static" / "assets" / "fonts"
 
-#: Nombres esperados de la tipografía incluida (PLAN.md D-14, licencia libre OFL).
+#: Nombres esperados de la tipografía incluida (licencia libre OFL).
 #: Si el archivo existe se usa esta; si no, se recurre a las fuentes del sistema.
 _BUNDLED_FONT_CANDIDATES = (
     "Fredoka-Bold.ttf",
@@ -147,7 +148,7 @@ def _load_font(size: int) -> ImageFont.FreeTypeFont | ImageFont.ImageFont:
 
 
 def build_title(name: str | None, default_title: str) -> str:
-    """Sin nombre → título predeterminado; con nombre → «{nombre}, {título}» (PLAN.md D-07)."""
+    """Sin nombre → título predeterminado; con nombre → «{nombre}, {título}»."""
     clean_name = (name or "").strip()
     if not clean_name:
         return default_title

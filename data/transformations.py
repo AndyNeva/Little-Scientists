@@ -1,7 +1,7 @@
 """Catálogo de transformaciones y construcción del prompt.
 
-Fuente de redacción: `PROMPTS.md` §2 y §3. El prompt se construye **solo en el
-servidor** (PLAN.md D-06); el navegador únicamente envía `style_id`.
+Fuente de redacción: `docs/PROMPTS.md` §2 y §3. El prompt se construye **solo en
+el servidor**; el navegador únicamente envía `style_id`.
 """
 
 from __future__ import annotations

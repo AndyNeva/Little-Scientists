@@ -1,6 +1,6 @@
 # API.md — Contrato HTTP
 
-Servidor Flask local, sin estado (ver `PLAN.md` D-01). Todas las rutas devuelven JSON salvo `POST /api/generate` en caso de éxito, que devuelve un PNG.
+Servidor Flask local y sin estado: no guarda sesión, ni fotografías, ni resultados. Todas las rutas devuelven JSON salvo `POST /api/generate` en caso de éxito, que devuelve un PNG.
 
 ---
 
@@ -15,7 +15,7 @@ Servidor Flask local, sin estado (ver `PLAN.md` D-01). Todas las rutas devuelven
 - `message` es informativo para depurar; el texto que ve el participante viene de `docs/UI_COPY.md`, según `code`.
 - Ninguna respuesta incluye claves, rutas internas, trazas ni cuerpos del proveedor.
 - Las respuestas con imagen llevan `Cache-Control: no-store`.
-- Los logs registran solo ruta, estilo, código y duración (`PLAN.md` D-10).
+- Los logs registran solo ruta, estilo, código y duración.
 
 ---
 
@@ -73,7 +73,7 @@ No se aceptan campos de prompt ni de proveedor enviados por el cliente.
 
 **Procesamiento en servidor**
 1. Validar campos y tamaño.
-2. Verificar que `photo` es una imagen real; corregir orientación EXIF; reducir resolución si hace falta (`PLAN.md` Q-04).
+2. Verificar que `photo` es una imagen real; corregir orientación EXIF; reducir resolución si hace falta.
 3. Construir el prompt desde el catálogo.
 4. Adquirir el bloqueo de generación; si está ocupado, responder `BUSY`.
 5. Llamar a `ImageGenerator.generate(image_bytes, prompt)` con tiempo de espera.
@@ -115,7 +115,7 @@ Reglas:
 
 ## 6. Rutas que no existen
 
-- `POST /api/reset`: no hay estado de servidor que limpiar (`PLAN.md` D-01). Debe responder 404.
+- `POST /api/reset`: no hay estado de servidor que limpiar. Debe responder 404.
 - Cualquier ruta para listar, guardar o recuperar fotografías.
 
 ---

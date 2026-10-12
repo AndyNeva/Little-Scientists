@@ -116,7 +116,7 @@ def test_generate_con_nombre_tambien_funciona(client, sample_photo):
 
 
 def test_generate_ignora_un_prompt_enviado_por_el_cliente(client, sample_photo, monkeypatch):
-    """PLAN.md D-06: el servidor construye el prompt; el cliente no lo aporta."""
+    """El servidor construye el prompt; el cliente no lo aporta."""
     fake = _FakeProvider()
     monkeypatch.setattr(routes, "build_provider", lambda settings: fake)
 
@@ -237,7 +237,7 @@ def test_errores_del_proveedor_se_traducen(client, sample_photo, monkeypatch, er
 
 
 def test_una_generacion_en_curso_devuelve_busy(app, sample_photo, monkeypatch):
-    """PLAN.md D-11: bloqueo no bloqueante; la segunda solicitud recibe BUSY."""
+    """Bloqueo no bloqueante: la segunda solicitud recibe BUSY."""
     blocking = _BlockingProvider()
     monkeypatch.setattr(routes, "build_provider", lambda settings: blocking)
 

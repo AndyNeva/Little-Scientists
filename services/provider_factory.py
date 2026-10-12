@@ -1,7 +1,7 @@
 """Factoría de proveedores.
 
-Selecciona el adaptador según `IMAGE_PROVIDER` (PLAN.md D-04). El resto de la
-aplicación depende solo de la interfaz `ImageGenerator`.
+Selecciona el adaptador según `IMAGE_PROVIDER`. El resto de la aplicación depende
+solo de la interfaz `ImageGenerator`.
 """
 
 from __future__ import annotations

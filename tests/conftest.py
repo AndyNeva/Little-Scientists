@@ -93,6 +93,6 @@ def sample_photo() -> bytes:
 def _capture_app_logs(caplog):
     """El logger de la aplicación no propaga, así que se engancha caplog a él.
 
-    Así las pruebas pueden comprobar qué se registra realmente (PLAN.md D-10).
+    Así las pruebas pueden comprobar qué se registra realmente.
     """
     caplog.set_level(logging.INFO, logger="feria_ia")

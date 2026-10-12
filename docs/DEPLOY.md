@@ -77,8 +77,9 @@ GEMINI_MODEL=gemini-nano-banana-2.1
 ```
 
 > ⚠️ **Cuota.** Antes del evento hay que confirmar cuántas imágenes se podrán
-> generar: el plan gratuito de Cloudflare da para unas **6 al día**. Ver
-> `docs/RUNBOOK.md` §5 y la tabla de comparación de proveedores.
+> generar: el plan gratuito de Cloudflare da para unas **6 al día**. La aplicación
+> avisa en la terminal cuando se agota la cuota y dice qué alternativas hay
+> configuradas.
 
 Después de cambiar `.env`:
 
@@ -159,8 +160,7 @@ El contenedor arranca solo tras un reinicio del servidor (`restart: unless-stopp
 
 **Registro de actividad:** los registros de la aplicación registran solo ruta,
 estilo, código de resultado y duración. **Nunca** fotografías, nombres, claves ni
-cuerpos de solicitud (`docs/PLAN.md` D-10). Aun así, revísalos antes de
-compartirlos.
+cuerpos de solicitud. Aun así, revísalos antes de compartirlos.
 
 ---
 
@@ -202,6 +202,6 @@ compartirlos.
 - [ ] Se comprobó la descarga del PNG y el botón «Siguiente participante».
 - [ ] Los términos de uso de datos del proveedor están revisados y aceptados por el
       responsable (se envían fotografías de menores a un servicio externo).
-- [ ] Está resuelta la autorización de los representantes legales
-      (`docs/RUNBOOK.md` §7).
+- [ ] Está resuelta la autorización de los representantes legales y la información
+      a las familias sobre el envío de la fotografía a un proveedor externo.
 - [ ] Se hizo un ensayo general y se anotaron los tiempos.

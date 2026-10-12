@@ -1,7 +1,8 @@
 """Configuración de la aplicación.
 
 Todas las variables se leen del entorno (`.env`), nunca del código ni del cliente.
-Ver `PLAN.md` §4 para la tabla de variables y valores por defecto.
+`.env.example` documenta cada una con su valor por defecto, y
+`docs/DEPLOY.md` explica cuáles son obligatorias según el proveedor.
 """
 
 from __future__ import annotations
@@ -73,7 +74,7 @@ class Settings:
     gemini_api_key: str | None
     gemini_model: str | None
 
-    # Preparación de la imagen antes de enviarla al proveedor (PLAN.md Q-04).
+    # Preparación de la imagen antes de enviarla al proveedor.
     input_max_side_px: int
     input_jpeg_quality: int
 
@@ -81,7 +82,7 @@ class Settings:
     gemini_input_max_side_px: int = 1024
 
     #: Modelo de Gemini por defecto: genera y **edita** imágenes a partir de una
-    #: foto de entrada (docs/PLAN.md Q-02). Confirmado en la documentación oficial.
+    #: foto de entrada. Confirmado en la documentación oficial.
     gemini_default_model: str = "gemini-nano-banana-2.1"
 
     @property
@@ -90,7 +91,7 @@ class Settings:
 
     @property
     def demo_mode(self) -> bool:
-        """`mock` es a la vez doble de pruebas y modo demostración (PLAN.md D-05)."""
+        """`mock` es a la vez doble de pruebas y modo demostración."""
         return self.provider == "mock"
 
     def missing_credentials(self) -> list[str]:

@@ -1,8 +1,8 @@
 """Proveedor `mock`: imagen sintética con Pillow.
 
-Doble de pruebas y **modo demostración** (PLAN.md D-05). Ignora la fotografía:
-la imagen resultante no contiene ningún dato personal. Es la contingencia del
-RUNBOOK §5 cuando el proveedor real falla o se agota la cuota.
+Doble de pruebas y **modo demostración**. Ignora la fotografía: la imagen
+resultante no contiene ningún dato personal. Es la contingencia cuando el proveedor
+real falla o se agota la cuota.
 """
 
 from __future__ import annotations

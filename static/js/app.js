@@ -1,9 +1,8 @@
 /*
  * app.js — pantallas, estado en memoria, peticiones y limpieza.
  *
- * Estado: PLAN.md D-03. La fotografía vive solo aquí, en memoria del navegador;
- * nunca se envía a ningún sitio salvo a /api/generate, y se descarta al pulsar
- * «Siguiente participante» (SPEC.md §10).
+ * La fotografía vive solo aquí, en memoria del navegador; nunca se envía a ningún
+ * sitio salvo a /api/generate, y se descarta al pulsar «Siguiente participante».
  *
  * La clave de API no aparece en este archivo ni en ninguna respuesta al cliente.
  */
@@ -148,7 +147,7 @@
     dom.nameError.hidden = false;
   }
 
-  /** Reglas de PLAN.md D-08, aplicadas también en el cliente para avisar antes de enviar. */
+  /** Reglas del nombre, aplicadas también en el cliente para avisar antes de enviar. */
   function validateName(value) {
     const name = (value || '').trim().replace(/\s+/g, ' ');
     if (!name) {

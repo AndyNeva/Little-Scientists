@@ -189,6 +189,8 @@ Los documentos de decisión y operación están en **`docs/`** (coincide con
 
 | Documento | Contenido |
 |---|---|
+| [`docs/DEPLOY.md`](docs/DEPLOY.md) | **Cómo poner la aplicación en un servidor** (para quien lo administra). |
+| [`docs/GITHUB.md`](docs/GITHUB.md) | Cómo subir el proyecto a GitHub y dar acceso al encargado. |
 | [`docs/PLAN.md`](docs/PLAN.md) | Decisiones técnicas y variables de entorno. |
 | [`docs/API.md`](docs/API.md) | Contrato de rutas, validaciones y códigos de error. |
 | [`docs/PROMPTS.md`](docs/PROMPTS.md) | Prompts de los ocho estilos y rúbrica de evaluación. |
